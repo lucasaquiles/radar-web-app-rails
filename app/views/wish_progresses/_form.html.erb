@@ -1,0 +1,40 @@
+
+
+<%= form_with(model: wish_progress, local: true) do |form| %>
+  <% if wish_progress.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(wish_progress.errors.count, "error") %> prohibited this wish_progress from being saved:</h2>
+
+      <ul>
+      <% wish_progress.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :wish_id %>
+    
+
+    <%= form.select :wish_id, Wish.all.collect { |user| [user.title, user.id] } %>
+ <!-- <%= collection_select(:wish, :wish_id, Wish.all, :id, :title, prompt: 'Select your wish') %> -->
+
+
+
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :wish_progress_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dataRegistro %>
+    <%= form.date_select :dataRegistro, id: :wish_progress_dataRegistro %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

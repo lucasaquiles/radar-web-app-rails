@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @wish_progress.description %>
+</p>
+
+<p>
+  <strong>Dataregistro:</strong>
+  <%= @wish_progress.dataRegistro %>
+</p>
+
+<%= link_to 'Edit', edit_wish_progress_path(@wish_progress) %> |
+<%= link_to 'Back', wish_progresses_path %>
