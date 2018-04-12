@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Wish Progresses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Wish</th>
+      <th>Description</th>
+      <th>Dataregistro</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wish_progresses.each do |wish_progress| %>
+      <tr>
+        <td><%= wish_progress.wish %></td>
+        <td><%= wish_progress.description %></td>
+        <td><%= wish_progress.dataRegistro %></td>
+        <td><%= link_to 'Show', wish_progress %></td>
+        <td><%= link_to 'Edit', edit_wish_progress_path(wish_progress) %></td>
+        <td><%= link_to 'Destroy', wish_progress, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wish Progress', new_wish_progress_path %>

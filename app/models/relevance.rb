@@ -1,0 +1,2 @@
+class Relevance < ApplicationRecord
+end
