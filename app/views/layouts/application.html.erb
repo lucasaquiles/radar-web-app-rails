@@ -48,7 +48,9 @@
    <% end %>
 
     </ul>
+     <% if user_signed_in? %>
   	<p style="margin-top:20px;"> Logged in as <strong><%= current_user.email %></strong>.</p>  
+  		<% end %>
   </div>
 
 
