@@ -29,7 +29,7 @@ class WishProgressesController < ApplicationController
     # @wish_progress.wish = wish
     respond_to do |format|
       if @wish_progress.save
-        format.html { redirect_to @wish_progress, notice: 'Wish progress was successfully created.' }
+        format.html { redirect_to @wish_progress.wish, notice: 'Wish progress was successfully created.' }
         format.json { render :show, status: :created, location: @wish_progress }
       else
         format.html { render :new }

@@ -1,19 +1,10 @@
-<style>
 
-table, td, tr, th{
-  border:solid 1px #ccc;
-  border-collapse: collapse;
-}
-td, th{
-  padding:10px  ;
-}
-</style>
 
 <p id="notice"><%= notice %></p>
 
 <h1>Wishes</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -31,26 +22,20 @@ td, th{
         <td><%= wish.description %></td>
         <td><%= wish.initDate.strftime('%d/%m/%Y') %></td>
         <td><%= wish.endDate.strftime('%d/%m/%Y') %></td>
-        <td><a href="/wish_progresses/new?wish_id=<%= wish.id%>">Meus wishes</a></td>
-        <td><%= link_to 'Show', wish %></td>
+        <td><a href="/wish_progresses/new?wish_id=<%= wish.id%>">Add progresso 
+        <span class="badge badge-primary badge-pill"> <%=wish.wish_progress.length %></span></a></td>
+        <td><%= link_to 'Show', wish %><span class="fi-plus"></span></td>
         <td><%= link_to 'Edit', edit_wish_path(wish) %></td>
         <td><%= link_to 'Destroy', wish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
 
-      <tr>
-        <td colspan="9"><p>Progress</p></td>
-      </tr>
-      <% wish.wish_progress.each do |wish_progress| %>
-      <tr>
-          <td><%=wish_progress.description%></td>
-          <td colspan="7"><%=wish_progress.dataRegistro.strftime('%d/%m/%Y')%></td>
-      </tr>
-      <% end %>
-
+     
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Wish', new_wish_path %>
+<div class="row" style="float:right;">
+<%= link_to 'Criar novo Wish ', new_wish_path, :class=> 'btn btn-primary', :style=>"float:right" %>
+</div>

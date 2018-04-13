@@ -10,28 +10,31 @@
       </ul>
     </div>
   <% end %>
+
+   
   
-  <div class="field">
+  
+  <div class="field form-group">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :wish_title %>
+    <%= form.text_field :title, id: :wish_title, :class =>'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :wish_description %>
+    <%= form.text_area :description, id: :wish_description, :class =>'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :initDate %>
-    <%= form.date_select :initDate, id: :wish_initDate %>
+    <%= form.date_select :initDate, id: :wish_initDate, :class =>'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :endDate %>
-    <%= form.date_select :endDate, id: :wish_endDate %>
+    <%= form.date_select :endDate, id: :wish_endDate, :class =>'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field form-group">
+    <%= form.submit  :class =>'btn btn-primary' %>
   </div>
 <% end %>
