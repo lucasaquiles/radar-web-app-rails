@@ -4,7 +4,8 @@ class WishesController < ApplicationController
   # GET /wishes
   # GET /wishes.json
   def index
-    @wishes = Wish.find_by(user:current_user.id)
+    @wishes = Wish.where(user:current_user.id).all
+   
   end
 
   # GET /wishes/1
