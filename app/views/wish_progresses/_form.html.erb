@@ -13,7 +13,7 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :wish_id %>
     
 
@@ -24,17 +24,17 @@
 
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :description %>
-    <%= form.text_field :description, id: :wish_progress_description %>
+    <%= form.text_field :description, id: :wish_progress_description, :class =>'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :dataRegistro %>
-    <%= form.date_select :dataRegistro, id: :wish_progress_dataRegistro %>
+    <%= form.date_select :dataRegistro, id: :wish_progress_dataRegistro, :class =>'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field form-group">
+    <%= form.submit  :class =>'btn btn-primary'%>
   </div>
 <% end %>

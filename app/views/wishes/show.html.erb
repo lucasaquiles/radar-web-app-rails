@@ -20,5 +20,14 @@
   <%= @wish.endDate %>
 </p>
 
+ <p>Progress</p>
+ <ul>
+      <% @wish.wish_progress.each do |wish_progress| %>
+      <li>
+          <%=wish_progress.description%> - <%=wish_progress.dataRegistro.strftime('%d/%m/%Y')%>
+      </li>
+      <% end %>
+ </ul>
+<a href="/wish_progresses/new?wish_id=<%= @wish.id%>" class="btn btn-primary">Add progresso </a>
 <%= link_to 'Edit', edit_wish_path(@wish) %> |
 <%= link_to 'Back', wishes_path %>
