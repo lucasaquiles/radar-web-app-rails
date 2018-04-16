@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+hight = Relevance.create([{description:'Hight', value:3}])
+mid = Relevance.create([{description:'Hight', value:2}])
+low = Relevance.create([{description:'Hight', value:1}])

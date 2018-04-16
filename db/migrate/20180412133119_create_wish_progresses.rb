@@ -3,8 +3,8 @@ class CreateWishProgresses < ActiveRecord::Migration[5.1]
     create_table :wish_progresses do |t|
       t.string :description
       t.date :dataRegistro
-      t.references :wish
-      t.references :relevance
+      t.references :goal
+      t.belongs_to :relevance
       t.timestamps
     end
   end

@@ -22,12 +22,39 @@
 
  <p>Progress</p>
  <ul>
-      <% @wish.wish_progress.each do |wish_progress| %>
+      <% @wish.goal.each do |goal| %>
       <li>
-          <%=wish_progress.description%> - <%=wish_progress.dataRegistro.strftime('%d/%m/%Y')%>
+          <p><%=goal.name%> </p>
+          <ul> 
+            
+          <% goal.wish_progress.each do |wish_progress| %>
+            <li> <%=wish_progress.description %> - (<%=wish_progress.relevance.value%>/<%=wish_progress.goal.points%>)</li>
+          <% end %>
+          </ul>
       </li>
       <% end %>
  </ul>
 <a href="/wish_progresses/new?wish_id=<%= @wish.id%>" class="btn btn-primary">Add progresso </a>
+
+<canvas id="myChart" width="200" height="200"></canvas>
+
+
+<% @list = @wish.goal.map{|k| "'#{k.name}'"}.join(",") %>
+<% @points = @wish.goal.map{|k| k.points}.join(",") %>
+<script type="text/javascript">
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+        
+        labels:  [ <%=raw @list %>],
+        datasets: [{
+            label: 'Your wish goal',
+            data:  [<%=raw @points %>]
+        }]
+    }
+});
+</script>
+
 <%= link_to 'Edit', edit_wish_path(@wish) %> |
 <%= link_to 'Back', wishes_path %>

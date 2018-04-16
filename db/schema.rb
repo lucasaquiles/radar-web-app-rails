@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412133148) do
+ActiveRecord::Schema.define(version: 20180416121725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "goals", force: :cascade do |t|
+    t.string "name"
+    t.boolean "status"
+    t.integer "points"
+    t.bigint "wish_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["wish_id"], name: "index_goals_on_wish_id"
+  end
+
   create_table "relevances", force: :cascade do |t|
     t.string "description"
+    t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,12 +52,12 @@ ActiveRecord::Schema.define(version: 20180412133148) do
   create_table "wish_progresses", force: :cascade do |t|
     t.string "description"
     t.date "dataRegistro"
-    t.bigint "wish_id"
+    t.bigint "goal_id"
     t.bigint "relevance_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_wish_progresses_on_goal_id"
     t.index ["relevance_id"], name: "index_wish_progresses_on_relevance_id"
-    t.index ["wish_id"], name: "index_wish_progresses_on_wish_id"
   end
 
   create_table "wishes", force: :cascade do |t|

@@ -9,8 +9,8 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Initdate</th>
-      <th>Enddate</th>
+      <th>Init at</th>
+      <th>End at</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -18,12 +18,12 @@
   <tbody>
     <% @wishes.each do |wish| %>
       <tr>
-        <td><%= wish.title %></td>
+        <td><%= link_to wish.title, wish %></td>
         <td><%= wish.description %></td>
         <td><%= wish.initDate.strftime('%d/%m/%Y') %></td>
         <td><%= wish.endDate.strftime('%d/%m/%Y') %></td>
         <td><a href="/wish_progresses/new?wish_id=<%= wish.id%>">Add progresso 
-        <span class="badge badge-primary badge-pill"> <%=wish.wish_progress.length %></span></a></td>
+        <span class="badge badge-primary badge-pill"> <%=wish.goal.length %></span></a></td>
         <td><%= link_to 'Show', wish %><span class="fi-plus"></span></td>
         <td><%= link_to 'Edit', edit_wish_path(wish) %></td>
         <td><%= link_to 'Destroy', wish, method: :delete, data: { confirm: 'Are you sure?' } %></td>

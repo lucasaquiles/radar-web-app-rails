@@ -29,7 +29,7 @@ class WishProgressesController < ApplicationController
     # @wish_progress.wish = wish
     respond_to do |format|
       if @wish_progress.save
-        format.html { redirect_to @wish_progress.wish, notice: 'Wish progress was successfully created.' }
+        format.html { redirect_to @wish_progress.goal.wish, notice: 'Wish progress was successfully created.' }
         format.json { render :show, status: :created, location: @wish_progress }
       else
         format.html { render :new }
@@ -38,7 +38,7 @@ class WishProgressesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /wish_progresses/1
+  # PATCPATCHH/PUT /wish_progresses/1
   # PATCH/PUT /wish_progresses/1.json
   def update
     respond_to do |format|
@@ -74,6 +74,6 @@ class WishProgressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wish_progress_params
-      params.require(:wish_progress).permit(:description, :dataRegistro, :wish_id)
+      params.require(:wish_progress).permit(:description, :dataRegistro, :goal_id, :relevance_id)
     end
 end
