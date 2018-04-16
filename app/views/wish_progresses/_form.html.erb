@@ -14,14 +14,21 @@
   <% end %>
 
   <div class="field form-group">
-    <%= form.label :wish_id %>
     
+  <%= 
+     form.select :goal_id, 
+    Goal.joins(:wish).where(wishes: {user:1}).collect{|goal| [goal.name, goal.id]}
 
-    <%= form.select :wish_id, Wish.where(user:current_user).all.collect { |user| [user.title, user.id] } %>
- <!-- <%= collection_select(:wish, :wish_id, Wish.all, :id, :title, prompt: 'Select your wish') %> -->
+  %>
+
+  </div>
 
 
-
+  <div class="field form-group">
+    <%= form.label :relecance_id %>
+    
+    <%= form.select :relevance_id, Relevance.all.collect { |user| [user.description, user.id] } %>
+ 
   </div>
 
   <div class="field form-group">

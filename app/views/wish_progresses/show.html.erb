@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Goal:</strong>
+  <%= @wish_progress.goal.relevance.value %> / <%= @wish_progress.goal.points %> 
+</p>
+
+
+<p>
   <strong>Description:</strong>
   <%= @wish_progress.description %>
 </p>

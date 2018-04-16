@@ -69,6 +69,6 @@ class RelevancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def relevance_params
-      params.require(:relevance).permit(:description)
+      params.require(:relevance).permit(:description, :value)
     end
 end

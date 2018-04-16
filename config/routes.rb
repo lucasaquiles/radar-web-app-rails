@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :goals
   resources :relevances
   resources :wish_progresses
   resources :wishes
