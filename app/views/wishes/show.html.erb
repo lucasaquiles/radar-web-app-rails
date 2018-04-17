@@ -24,22 +24,28 @@
 </p>
 
 
+<p>Your work</p>
 
+<ul class="list-group">
 
-
- <ul>
-      <% @wish.goal.each do |goal| %>
-      <li>
-          <p><%=goal.name%> </p>
-          <ul> 
-            
+   <% @wish.goal.each do |goal| %>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div style="width:100%; height:auto; overflow:hidden; ">
+        <a href="#" class="goal-title"><%=goal.name%></a>
+        <span class="badge badge-primary badge-pill"><%=goal.wish_progress.length%></span>
+        <ul class="wish-progress-list-wrapper"> 
           <% goal.wish_progress.each do |wish_progress| %>
             <li> <%=wish_progress.description %> - (<%=wish_progress.relevance.value%>/<%=wish_progress.goal.points%>)</li>
           <% end %>
           </ul>
-      </li>
-      <% end %>
- </ul>
+      </div>
+      
+    </li>
+
+  <% end %>
+</ul> 
+
+
  </div>
 
 
