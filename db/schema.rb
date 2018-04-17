@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20180416121725) do
   create_table "relevances", force: :cascade do |t|
     t.string "description"
     t.integer "value"
-    t.datetime "created_at", null: false
+    t.datetime "created_at", null: false  
     t.datetime "updated_at", null: false
   end
 
