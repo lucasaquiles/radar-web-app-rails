@@ -1,9 +1,17 @@
-<p id="notice"><%= notice %></p>
+<style type="text/css">
+  
+  .wish-progress-list-wrapper{
+    display: none;
+    margin-top: 10px;
+  }
+</style>
 
-<p>
-  <strong>Title:</strong>
+<p id="notice"><%= notice %></p>
+<h2 class="header">
   <%= @wish.title %>
-</p>
+</h2>
+
+<div class="progress-wrapper" style="float:left;">
 
 <p>
   <strong>Description:</strong>
@@ -11,16 +19,33 @@
 </p>
 
 <p>
-  <strong>Initdate:</strong>
-  <%= @wish.initDate %>
+  <strong>Init at:</strong>
+  <%= @wish.initDate.strftime('%d/%m/%Y') %> to <%= @wish.endDate.strftime('%d/%m/%Y') %>
 </p>
 
-<p>
-  <strong>Enddate:</strong>
-  <%= @wish.endDate %>
-</p>
 
- <p>Progress</p>
+<p>Your work</p>
+
+<ul class="list-group">
+
+   <% @wish.goal.each do |goal| %>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div style="width:100%; height:auto; overflow:hidden; ">
+        <a href="#" class="goal-title"><%=goal.name%></a>
+        <span class="badge badge-primary badge-pill"><%=goal.wish_progress.length%></span>
+        <ul class="wish-progress-list-wrapper"> 
+          <% goal.wish_progress.each do |wish_progress| %>
+            <li> <%=wish_progress.description %> - (<%=wish_progress.relevance.value%>/<%=wish_progress.goal.points%>)</li>
+          <% end %>
+          </ul>
+      </div>
+      
+    </li>
+
+  <% end %>
+</ul> 
+
+
  <ul>
       <% @wish.goal.each do |goal| %>
       <li>
@@ -34,7 +59,8 @@
       </li>
       <% end %>
  </ul>
-<a href="/wish_progresses/new?wish_id=<%= @wish.id%>" class="btn btn-primary">Add progresso </a>
+ </div>
+
 
 <% @list = @wish.goal.map{|k| "'#{k.name}'"}.join(",") %>
 <% @points = @wish.goal.map{|k| k.points}.join(",") %>
@@ -55,7 +81,7 @@
 
 <% @myPoints = map.map{|k,v| v}.join(",") %>
 
-<div id="canvas-wrapper" style="width:500px; height:500px;">
+<div id="canvas-wrapper" style="width:500px; height:500px; float:right">
 <canvas id="myChart" width="200" height="200"></canvas>
 </div>
 
@@ -67,14 +93,14 @@ var myChart = new Chart(ctx, {
         
         labels:  [ <%=raw @list %>],
         datasets: [{
-            label: 'Your wish goal',
+            label: 'Your goals',
             data:  [<%=raw @points %>],
             borderColor: "#ccc000"
         }, {
 
           data: [<%=@myPoints%>],
           borderColor: "#82e06d",
-          label: "Progress"
+          label: "Your current progress"
         }],
         
         borderWidth: 0.5
@@ -84,6 +110,22 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
+<div class="action-wrapper" style="clear:both">
+<a href="/wish_progresses/new?wish_id=<%= @wish.id%>" class="btn btn-primary">Add progresso </a>
+<%= link_to 'Edit', edit_wish_path(@wish), :class=> "btn btn-success" %> 
+<%= link_to 'Back', wishes_path, :class=> "btn btn-default" %>
+</div>
 
-<%= link_to 'Edit', edit_wish_path(@wish) %> |
-<%= link_to 'Back', wishes_path %>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+
+  jQuery('a.goal-title').click(function(e){
+
+    jQuery(e.currentTarget).parent().find('ul').toggle();
+
+    e.preventDefault();
+  })
+})
+
+</script>
