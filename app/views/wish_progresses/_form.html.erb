@@ -17,7 +17,7 @@
     
   <%= 
      form.select :goal_id, 
-    Goal.joins(:wish).where(wishes: {user:1}).collect{|goal| [goal.name, goal.id]}
+    Goal.joins(:wish).where(wishes: {user:current_user}).collect{|goal| [goal.name, goal.id]}
 
   %>
 
