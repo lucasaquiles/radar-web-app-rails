@@ -55,7 +55,9 @@
 
 <% @myPoints = map.map{|k,v| v}.join(",") %>
 
+<div id="canvas-wrapper" style="width:500px; height:500px;">
 <canvas id="myChart" width="200" height="200"></canvas>
+</div>
 
 <script type="text/javascript">
 var ctx = document.getElementById("myChart");
