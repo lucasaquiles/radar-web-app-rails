@@ -84,8 +84,9 @@ development:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-# production:
-#   <<: *default
-#   database: iwish_production
-#   username: postgres
-#   password: root
+production:
+  <<: *default
+  host: ec2-54-235-193-34.compute-1.amazonaws.com
+  database: dd0kbssp0jtpsj
+  username: dysexgcnvpmcpt
+  password: f951daea982d4616a7324826b3f5ae15d39854f5912ebb14ce63b0d3b1571ab5
